@@ -1,0 +1,21 @@
+{
+  "name": "what-did-i-miss",
+  "version": "1.0.0",
+  "description": "Local-First AI Chat Digest & Urgency Prioritizer micro-app for 'The Unread Problem'",
+  "main": "engine.js",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "local-first",
+    "chat-summarizer",
+    "privacy",
+    "action-items",
+    "prompt-injection-defense",
+    "what-did-i-miss"
+  ],
+  "author": "Aaditya",
+  "license": "MIT"
+}
