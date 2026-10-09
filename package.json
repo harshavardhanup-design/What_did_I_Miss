@@ -4,6 +4,7 @@
   "description": "Local-First AI Chat Digest & Urgency Prioritizer micro-app for 'The Unread Problem'",
   "main": "engine.js",
   "scripts": {
+    "build": "node --test tests/*.test.js",
     "test": "node --test tests/*.test.js",
     "start": "npx serve .",
     "dev": "npx serve ."
