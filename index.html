@@ -15,11 +15,12 @@
           colors: {
             brand: {
               orange: '#f95f19',
-              orangeDark: '#e04c08',
+              orangeDark: '#e04a09',
               orangeLight: '#ff7738',
+              orangeSoft: '#fff5f0',
               navy: '#0c192c',
               navyDark: '#08101d',
-              navyLight: '#13243d'
+              navyLight: '#14253f'
             }
           }
         }
@@ -27,101 +28,98 @@
     }
   </script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    .hero-bg {
-      background: linear-gradient(135deg, rgba(12, 25, 44, 0.88) 0%, rgba(249, 95, 25, 0.75) 100%),
-                  url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1800&q=80');
-      background-size: cover;
-      background-position: center;
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
 
   <!-- ============================================================== -->
-  <!-- 1. TOP HEADER (Matches Template: Logo + Contact Meta + Orange CTA) -->
+  <!-- 1. TOP HEADER (Clean White Bar with Brand, Privacy Meta, & CTA) -->
   <!-- ============================================================== -->
-  <div class="bg-white border-b border-slate-200">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
       
       <!-- Brand Logo -->
-      <div class="flex items-center gap-2">
-        <a href="#" class="flex items-baseline gap-1">
-          <span class="text-2xl font-black tracking-tight text-slate-900">CATCHUP<span class="text-brand-orange">.</span></span>
-        </a>
-        <span class="text-[10px] uppercase font-bold tracking-widest bg-orange-100 text-brand-orange px-2 py-0.5 rounded-full ml-1">
-          Local AI
-        </span>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-orange flex items-center justify-center text-white shadow-md shadow-orange-500/30">
+          <i data-lucide="sparkles" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <a href="#" class="flex items-baseline gap-1">
+            <span class="text-xl font-black tracking-tight text-brand-navy">WHAT DID I MISS<span class="text-brand-orange">.</span></span>
+          </a>
+          <p class="text-[11px] font-medium text-slate-400">Local-First AI Chat Intelligence & Prioritizer</p>
+        </div>
       </div>
 
-      <!-- Center & Right Meta Items (Icons + Details) -->
-      <div class="flex items-center gap-6 text-xs text-slate-600">
+      <!-- Right Meta Info & Session Lock CTA -->
+      <div class="flex items-center gap-4 sm:gap-6 text-xs">
         
-        <!-- Privacy Meta -->
-        <div class="hidden sm:flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center">
-            <i data-lucide="shield-check" class="w-4 h-4 text-brand-orange"></i>
-          </div>
+        <!-- Privacy Badge -->
+        <div class="hidden sm:flex items-center gap-2.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
+          <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
           <div>
-            <div class="font-bold text-slate-900">100% On-Device</div>
-            <div class="text-[11px] text-slate-400">Zero Cloud Data Leakage</div>
+            <span class="font-bold text-slate-700">100% On-Device</span>
+            <span class="text-slate-400 text-[11px] block">Zero Cloud Egress</span>
           </div>
         </div>
 
-        <!-- Engine Status Meta -->
-        <div class="hidden md:flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center">
-            <i data-lucide="cpu" class="w-4 h-4 text-brand-orange"></i>
-          </div>
+        <!-- Security / Execution Speed Badge -->
+        <div class="hidden md:flex items-center gap-2.5 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-lg">
+          <i data-lucide="shield-check" class="w-4 h-4 text-brand-orange"></i>
           <div>
-            <div class="font-bold text-slate-900">Local Heuristics Engine</div>
-            <div class="text-[11px] text-slate-400">Sub-10ms Processing Speed</div>
+            <span class="font-bold text-slate-700">Prompt-Guard Active</span>
+            <span class="text-slate-400 text-[11px] block">Sub-10ms Processing</span>
           </div>
         </div>
 
-        <!-- Orange CTA Button (Session Lock) -->
-        <button onclick="togglePinLock()" id="pinLockBtn" class="bg-brand-orange hover:bg-brand-orangeDark text-white font-bold px-5 py-2.5 rounded-md text-xs uppercase tracking-wider transition shadow-sm flex items-center gap-1.5">
+        <!-- Session Lock Button (Orange CTA styled like template) -->
+        <button onclick="togglePinLock()" id="pinLockBtn" class="bg-brand-orange hover:bg-brand-orangeDark text-white font-bold px-4 py-2 rounded-lg text-xs uppercase tracking-wider transition shadow-sm flex items-center gap-1.5">
           <i data-lucide="lock" class="w-3.5 h-3.5"></i>
           <span id="pinLockLabel">Session Lock</span>
         </button>
+
       </div>
 
     </div>
-  </div>
+  </header>
 
   <!-- ============================================================== -->
-  <!-- 2. DARK NAV BAR (Matches Template: Dark Navy Bar + Nav Links + Search) -->
+  <!-- 2. DARK NAV TOOLBAR (Deep Navy Toolbar with Presets & Live Search) -->
   <!-- ============================================================== -->
-  <nav class="bg-brand-navy text-white sticky top-0 z-40 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-2">
+  <nav class="bg-brand-navy text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-3 py-2.5">
       
-      <!-- Preset Navigation Links -->
-      <div class="flex items-center gap-1 overflow-x-auto py-2 text-xs font-semibold">
-        <button onclick="loadDataset('incident')" class="px-3 py-2 rounded-md hover:bg-brand-navyLight hover:text-brand-orange transition flex items-center gap-1.5 text-orange-300">
-          <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-brand-orange"></i> Production Incident
+      <!-- Scenario Selector Buttons -->
+      <div class="flex items-center gap-1.5 overflow-x-auto text-xs font-semibold py-1">
+        <span class="text-slate-400 text-[11px] uppercase tracking-wider font-bold mr-1 flex items-center gap-1">
+          <i data-lucide="database" class="w-3 h-3 text-brand-orange"></i> Presets:
+        </span>
+        <button onclick="loadDataset('incident')" class="px-3 py-1.5 rounded-md hover:bg-brand-navyLight hover:text-brand-orange text-orange-200 transition flex items-center gap-1.5 border border-orange-500/30">
+          🚨 Production Bug
         </button>
-        <button onclick="loadDataset('slack')" class="px-3 py-2 rounded-md hover:bg-brand-navyLight hover:text-brand-orange transition flex items-center gap-1.5 text-slate-200">
-          <i data-lucide="rocket" class="w-3.5 h-3.5 text-blue-400"></i> Slack v3.0 Launch
+        <button onclick="loadDataset('slack')" class="px-3 py-1.5 rounded-md hover:bg-brand-navyLight hover:text-brand-orange text-slate-200 transition flex items-center gap-1.5 border border-slate-700">
+          🚀 Slack Launch
         </button>
-        <button onclick="loadDataset('conflict')" class="px-3 py-2 rounded-md hover:bg-brand-navyLight hover:text-brand-orange transition flex items-center gap-1.5 text-slate-200">
-          <i data-lucide="git-pull-request" class="w-3.5 h-3.5 text-amber-400"></i> Ambiguity Conflicts
+        <button onclick="loadDataset('conflict')" class="px-3 py-1.5 rounded-md hover:bg-brand-navyLight hover:text-brand-orange text-slate-200 transition flex items-center gap-1.5 border border-slate-700">
+          ⚔️ Ambiguity Conflict
         </button>
-        <button onclick="loadDataset('adversarial')" class="px-3 py-2 rounded-md hover:bg-brand-navyLight hover:text-brand-orange transition flex items-center gap-1.5 text-slate-200">
-          <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-purple-400"></i> Adversarial Guard
-        </button>
-        <button onclick="document.getElementById('diagnosticsSection').scrollIntoView({behavior: 'smooth'})" class="px-3 py-2 rounded-md hover:bg-brand-navyLight hover:text-brand-orange transition flex items-center gap-1.5 text-slate-200">
-          <i data-lucide="activity" class="w-3.5 h-3.5 text-emerald-400"></i> Diagnostics
+        <button onclick="loadDataset('adversarial')" class="px-3 py-1.5 rounded-md hover:bg-brand-navyLight hover:text-brand-orange text-slate-200 transition flex items-center gap-1.5 border border-slate-700">
+          🛡️ Override Attack
         </button>
       </div>
 
-      <!-- Quick Q&A Search in Navbar -->
-      <div class="py-2 flex items-center">
+      <!-- Quick Q&A Search in Toolbar -->
+      <div class="flex items-center py-1">
         <div class="relative w-64 md:w-80">
-          <input type="text" id="navSearchInput" placeholder="Ask anything about chat..." class="w-full bg-brand-navyDark text-white placeholder-slate-400 text-xs rounded-full pl-3.5 pr-8 py-1.5 border border-slate-700 focus:outline-none focus:border-brand-orange" onkeydown="if(event.key==='Enter') runNavSearch()">
-          <button onclick="runNavSearch()" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-brand-orange">
+          <input type="text" id="navSearchInput" placeholder="Ask anything about this chat..." class="w-full bg-brand-navyDark text-white placeholder-slate-400 text-xs rounded-full pl-3.5 pr-8 py-1.5 border border-slate-700 focus:outline-none focus:border-brand-orange font-medium" onkeydown="if(event.key==='Enter') runNavSearch()">
+          <button onclick="runNavSearch()" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-brand-orange transition">
             <i data-lucide="search" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -131,34 +129,56 @@
   </nav>
 
   <!-- ============================================================== -->
-  <!-- 3. HERO SECTION (Matches Template: Big Bold Headline + Subtitle + CTA) -->
+  <!-- 3. FOUR SIGNATURE STAT / FEATURE BLOCKS (Template Inspired) -->
   <!-- ============================================================== -->
-  <section class="hero-bg text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative shadow-inner">
-    <div class="max-w-7xl mx-auto space-y-6">
+  <section class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       
-      <div class="max-w-2xl space-y-4">
-        <div class="inline-flex items-center gap-2 bg-black/40 border border-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-orange-200">
-          <span class="w-2 h-2 rounded-full bg-brand-orange animate-ping"></span>
-          The Unread Problem: "What Did I Miss?"
+      <!-- Card 1: Vibrant Orange -->
+      <div class="bg-brand-orange text-white p-5 rounded-xl shadow-sm flex items-center justify-between hover:shadow-md transition">
+        <div class="space-y-1">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-white/80">Urgent Alerts</span>
+          <div id="metricAlertsCount" class="text-3xl font-extrabold font-mono-code">0</div>
+          <p class="text-[11px] text-white/90">P0 / P1 Emergency Issues</p>
         </div>
+        <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+          <i data-lucide="alert-octagon" class="w-6 h-6 text-white"></i>
+        </div>
+      </div>
 
-        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-          Prioritize What Matters in Chaotic Chats.
-        </h1>
+      <!-- Card 2: Deep Navy -->
+      <div class="bg-brand-navy text-white p-5 rounded-xl shadow-sm flex items-center justify-between hover:shadow-md transition">
+        <div class="space-y-1">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Action Items</span>
+          <div id="metricActionsCount" class="text-3xl font-extrabold text-brand-orange font-mono-code">0</div>
+          <p class="text-[11px] text-slate-300">Tasks with Deadlines</p>
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+          <i data-lucide="check-square" class="w-6 h-6 text-brand-orange"></i>
+        </div>
+      </div>
 
-        <p class="text-sm sm:text-base text-slate-200 leading-relaxed max-w-xl">
-          Instantly isolate P0 emergency alerts, extract delegated tasks with deadlines, and identify team decisions from WhatsApp, Slack, and Teams exports—running 100% on your device with zero cloud data retention.
-        </p>
+      <!-- Card 3: Vibrant Orange -->
+      <div class="bg-brand-orange text-white p-5 rounded-xl shadow-sm flex items-center justify-between hover:shadow-md transition">
+        <div class="space-y-1">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-white/80">Decisions Finalized</span>
+          <div id="metricDecisionsCount" class="text-3xl font-extrabold font-mono-code">0</div>
+          <p class="text-[11px] text-white/90">Confirmed Consensus</p>
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+          <i data-lucide="scale" class="w-6 h-6 text-white"></i>
+        </div>
+      </div>
 
-        <div class="flex flex-wrap items-center gap-3 pt-2">
-          <button onclick="scrollToWorkspace()" class="bg-brand-orange hover:bg-brand-orangeDark text-white font-bold px-7 py-3 rounded-full text-xs uppercase tracking-wider transition shadow-lg flex items-center gap-2">
-            <i data-lucide="zap" class="w-4 h-4"></i> Run Local Catch-Up Digest
-          </button>
-          
-          <label class="cursor-pointer bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md font-semibold px-6 py-3 rounded-full text-xs uppercase tracking-wider transition flex items-center gap-2">
-            <i data-lucide="upload" class="w-4 h-4 text-orange-300"></i> Upload Chat File
-            <input type="file" id="fileUpload" accept=".txt,.json,.log,.vtt" class="hidden" onchange="handleFileUpload(event)">
-          </label>
+      <!-- Card 4: Deep Navy -->
+      <div class="bg-brand-navy text-white p-5 rounded-xl shadow-sm flex items-center justify-between hover:shadow-md transition">
+        <div class="space-y-1">
+          <span class="text-[11px] uppercase tracking-wider font-bold text-slate-400">Signal Density</span>
+          <div id="metricSignalRatio" class="text-3xl font-extrabold text-brand-orange font-mono-code">0%</div>
+          <p class="text-[11px] text-slate-300">High-Signal Ratio</p>
+        </div>
+        <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+          <i data-lucide="activity" class="w-6 h-6 text-brand-orange"></i>
         </div>
       </div>
 
@@ -166,82 +186,9 @@
   </section>
 
   <!-- ============================================================== -->
-  <!-- 4. SIGNATURE 4 ALTERNATING BLOCKS (Exactly Matches Template Layout) -->
+  <!-- 4. MAIN INTERACTIVE WORKSPACE (Clean, Responsive Card Dashboard) -->
   <!-- ============================================================== -->
-  <section class="w-full">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-      
-      <!-- Block 1: Vibrant Orange -->
-      <div class="bg-brand-orange text-white p-8 flex flex-col justify-between space-y-4 hover:brightness-105 transition">
-        <div class="space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
-            <i data-lucide="alert-octagon" class="w-6 h-6 text-white"></i>
-          </div>
-          <h3 class="text-lg font-bold">P0 Urgency Alerts</h3>
-          <p class="text-xs text-white/90 leading-relaxed">
-            Identifies system crashes, emergency outages, and impending deadlines before small-talk buries them.
-          </p>
-        </div>
-        <div class="text-[11px] font-bold uppercase tracking-wider text-white/80 pt-2 flex items-center gap-1">
-          Priority Engine <i data-lucide="arrow-right" class="w-3 h-3"></i>
-        </div>
-      </div>
-
-      <!-- Block 2: Deep Navy -->
-      <div class="bg-brand-navy text-white p-8 flex flex-col justify-between space-y-4 hover:brightness-110 transition">
-        <div class="space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-            <i data-lucide="check-square" class="w-6 h-6 text-brand-orange"></i>
-          </div>
-          <h3 class="text-lg font-bold">Action Items & Tasks</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            Extracts delegated assignments, assigned owners, and hard deadlines (e.g. "by 10:30 AM today").
-          </p>
-        </div>
-        <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 pt-2 flex items-center gap-1">
-          Temporal Parser <i data-lucide="arrow-right" class="w-3 h-3"></i>
-        </div>
-      </div>
-
-      <!-- Block 3: Vibrant Orange -->
-      <div class="bg-brand-orange text-white p-8 flex flex-col justify-between space-y-4 hover:brightness-105 transition">
-        <div class="space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
-            <i data-lucide="scale" class="w-6 h-6 text-white"></i>
-          </div>
-          <h3 class="text-lg font-bold">Decisions & Conflicts</h3>
-          <p class="text-xs text-white/90 leading-relaxed">
-            Detects confirmed consensus while flagging contradictory statements for technical lead sign-off.
-          </p>
-        </div>
-        <div class="text-[11px] font-bold uppercase tracking-wider text-white/80 pt-2 flex items-center gap-1">
-          Ambiguity Resolver <i data-lucide="arrow-right" class="w-3 h-3"></i>
-        </div>
-      </div>
-
-      <!-- Block 4: Deep Navy -->
-      <div class="bg-brand-navy text-white p-8 flex flex-col justify-between space-y-4 hover:brightness-110 transition">
-        <div class="space-y-3">
-          <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-            <i data-lucide="shield-check" class="w-6 h-6 text-brand-orange"></i>
-          </div>
-          <h3 class="text-lg font-bold">100% Local-First Privacy</h3>
-          <p class="text-xs text-slate-300 leading-relaxed">
-            All text stays in local browser memory. Immune to prompt injections with zero cloud telemetry.
-          </p>
-        </div>
-        <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 pt-2 flex items-center gap-1">
-          Air-Gap Security <i data-lucide="arrow-right" class="w-3 h-3"></i>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ============================================================== -->
-  <!-- 5. MAIN WORKSPACE DASHBOARD (Clean Modern Cards Layout) -->
-  <!-- ============================================================== -->
-  <main id="workspaceContainer" class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-4 space-y-6">
     
     <!-- Locked Session Overlay (Privacy PIN Vault) -->
     <div id="lockedOverlay" class="hidden p-10 bg-white border border-slate-200 rounded-2xl text-center space-y-4 max-w-md mx-auto shadow-xl">
@@ -249,7 +196,7 @@
         <i data-lucide="shield-lock" class="w-7 h-7"></i>
       </div>
       <h2 class="text-xl font-extrabold text-slate-900">Session Vault Locked</h2>
-      <p class="text-xs text-slate-500">Your chat digest is hidden for screen privacy. Enter your client PIN to unlock.</p>
+      <p class="text-xs text-slate-500">Your chat digest is masked for screen privacy. Enter your client PIN to view.</p>
       <input type="password" id="pinInput" maxlength="6" placeholder="Enter PIN (Default: 1234)" class="w-48 mx-auto text-center bg-slate-50 border border-slate-300 rounded-lg py-2.5 px-4 text-sm font-mono tracking-widest focus:ring-2 focus:ring-brand-orange outline-none">
       <div>
         <button onclick="unlockSession()" class="bg-brand-orange hover:bg-brand-orangeDark text-white text-xs font-bold px-6 py-2.5 rounded-md transition uppercase tracking-wider">Unlock Vault</button>
@@ -257,71 +204,85 @@
       <p id="pinError" class="text-xs text-rose-500 font-semibold hidden">Incorrect PIN. Try 1234.</p>
     </div>
 
-    <!-- Active Workspace -->
-    <div id="mainWorkspace" class="space-y-8">
+    <!-- Active Workspace Container -->
+    <div id="mainWorkspace" class="space-y-6">
 
-      <!-- Chat Input Card -->
-      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-4">
+      <!-- Chat Input & Configuration Card -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 space-y-4">
         
-        <div class="flex flex-wrap justify-between items-center gap-2 pb-3 border-b border-slate-100">
+        <div class="flex flex-wrap justify-between items-center gap-3 pb-3 border-b border-slate-100">
           <div class="flex items-center gap-2">
-            <div class="w-3 h-3 rounded-full bg-brand-orange"></div>
-            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-800">Unread Conversation Transcript</h2>
+            <span class="w-2.5 h-2.5 rounded-full bg-brand-orange"></span>
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-900">Conversation Transcript Input</h2>
           </div>
-          <div class="text-xs text-slate-400 font-medium">Supports WhatsApp .txt, Slack .json, & Teams transcripts</div>
+          
+          <div class="flex items-center gap-3">
+            <label class="cursor-pointer text-xs font-bold text-brand-orange hover:text-brand-orangeDark flex items-center gap-1.5 transition">
+              <i data-lucide="upload" class="w-3.5 h-3.5"></i> Upload File (.txt / .json)
+              <input type="file" id="fileUpload" accept=".txt,.json,.log,.vtt" class="hidden" onchange="handleFileUpload(event)">
+            </label>
+            <span class="text-slate-300">|</span>
+            <button onclick="document.getElementById('chatInput').value=''; runAnalysis();" class="text-xs font-medium text-slate-400 hover:text-slate-600 transition">
+              Clear
+            </button>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-4 gap-5">
+          
+          <!-- Textarea (Left 3 Columns) -->
           <div class="lg:col-span-3 space-y-2">
-            <textarea id="chatInput" rows="7" placeholder="Paste unread chat logs or click one of the preset dataset tabs in the dark top navbar..." class="w-full bg-slate-50 border border-slate-200 rounded-lg p-4 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange transition resize-y"></textarea>
+            <textarea id="chatInput" rows="7" placeholder="Paste unformatted chat messages from WhatsApp, Slack, or Teams here, or click one of the preset buttons above..." class="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs font-mono-code text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange transition resize-y"></textarea>
           </div>
 
-          <div class="space-y-4 flex flex-col justify-between bg-slate-50 p-4 rounded-lg border border-slate-200">
+          <!-- Controls & Submit (Right 1 Column) -->
+          <div class="space-y-4 flex flex-col justify-between bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div class="space-y-3">
               <div>
                 <label for="myUsername" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
                   My Handle / Name
                 </label>
-                <input id="myUsername" type="text" value="Aaditya" placeholder="e.g. Aaditya" class="w-full bg-white border border-slate-300 rounded-md p-2 text-xs font-mono text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange">
-                <p class="text-[11px] text-slate-500 mt-1">Filters tasks and mentions assigned to you.</p>
+                <input id="myUsername" type="text" value="Aaditya" placeholder="e.g. Aaditya" class="w-full bg-white border border-slate-300 rounded-lg p-2.5 text-xs font-mono-code text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                <p class="text-[11px] text-slate-500 mt-1">Filters direct pings & tasks assigned to you.</p>
               </div>
 
-              <div class="text-[11px] text-slate-500 space-y-1 pt-1 border-t border-slate-200">
+              <div class="text-[11px] text-slate-500 space-y-1 pt-2 border-t border-slate-200">
                 <div class="font-bold text-slate-700 flex items-center gap-1">
-                  <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange"></i> 100% Privacy Active
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-brand-orange"></i> Zero Cloud Egress
                 </div>
-                <div>No text leaves this browser window. Zero network egress.</div>
+                <div>Your messages stay in local device memory.</div>
               </div>
             </div>
 
-            <button id="processBtn" onclick="runAnalysis()" class="w-full bg-brand-orange hover:bg-brand-orangeDark text-white font-bold py-3 px-4 rounded-md text-xs uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
-              <i data-lucide="play" class="w-3.5 h-3.5"></i> Run Local Digest
+            <button id="processBtn" onclick="runAnalysis()" class="w-full bg-brand-orange hover:bg-brand-orangeDark text-white font-bold py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
+              <i data-lucide="zap" class="w-4 h-4"></i> Run Catch-Up Digest
             </button>
           </div>
+
         </div>
 
       </div>
 
-      <div id="errorBox" class="hidden p-4 bg-rose-50 border border-rose-200 rounded-lg text-rose-700 text-xs flex items-center gap-2 font-medium"></div>
+      <div id="errorBox" class="hidden p-4 bg-rose-50 border border-rose-200 rounded-xl text-rose-700 text-xs flex items-center gap-2 font-medium"></div>
 
       <!-- Urgent Alert Banner -->
       <div id="urgentAlertsContainer" class="hidden space-y-2"></div>
 
       <!-- Analysis Results Dashboard -->
-      <div id="resultsDashboard" class="hidden space-y-8">
+      <div id="resultsDashboard" class="hidden space-y-6">
 
-        <!-- Executive TL;DR Briefing Card -->
+        <!-- Executive Briefing Card -->
         <div class="bg-white border-l-4 border-brand-orange rounded-xl border-y border-r border-slate-200 p-6 shadow-sm space-y-3">
           <div class="flex justify-between items-center">
             <h3 class="text-xs font-bold uppercase tracking-wider text-brand-orange flex items-center gap-1.5">
               <i data-lucide="file-text" class="w-4 h-4"></i> Executive Catch-Up Briefing
             </h3>
-            <span id="digestStatsBadge" class="text-xs bg-slate-100 border border-slate-200 px-3 py-1 rounded-full text-slate-600 font-mono font-semibold"></span>
+            <span id="digestStatsBadge" class="text-xs bg-slate-100 border border-slate-200 px-3 py-1 rounded-full text-slate-600 font-mono-code font-semibold"></span>
           </div>
           <p id="digestSummaryText" class="text-sm text-slate-700 leading-relaxed"></p>
         </div>
 
-        <!-- 3-Column Core Signals Grid -->
+        <!-- 3-Column Signals Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <!-- Column 1: Action Items -->
@@ -372,27 +333,27 @@
           <div class="flex justify-between items-center pb-3 border-b border-slate-100">
             <div>
               <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-                <i data-lucide="activity" class="w-4 h-4 text-brand-orange"></i> Conversation Health & Diagnostics
+                <i data-lucide="activity" class="w-4 h-4 text-brand-orange"></i> Conversation Health Diagnostics
               </h4>
-              <p class="text-[11px] text-slate-500">Measures signal efficiency, team tension, and dropped questions.</p>
+              <p class="text-[11px] text-slate-500">Measures signal efficiency, team stress, and dropped inquiries.</p>
             </div>
-            <span class="text-xs font-mono text-slate-400">On-Device Analytics</span>
+            <span class="text-xs font-mono-code text-slate-400">On-Device Analytics</span>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
               <span class="text-[11px] text-slate-500 uppercase tracking-wider font-bold">Signal Density</span>
               <div class="flex items-baseline justify-between">
-                <span id="signalRatioText" class="text-2xl font-extrabold text-brand-orange font-mono">0%</span>
-                <span id="noiseRatioText" class="text-xs text-slate-500 font-mono">0% Noise</span>
+                <span id="signalRatioText" class="text-2xl font-extrabold text-brand-orange font-mono-code">0%</span>
+                <span id="noiseRatioText" class="text-xs text-slate-500 font-mono-code">0% Noise</span>
               </div>
             </div>
 
             <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-1">
               <span class="text-[11px] text-slate-500 uppercase tracking-wider font-bold">Tension / Blocker Gauge</span>
               <div class="flex items-baseline justify-between">
-                <span id="tensionMeterText" class="text-2xl font-extrabold text-rose-600 font-mono">Low</span>
-                <span id="tensionScoreVal" class="text-xs text-slate-500 font-mono">0/100</span>
+                <span id="tensionMeterText" class="text-2xl font-extrabold text-rose-600 font-mono-code">Low</span>
+                <span id="tensionScoreVal" class="text-xs text-slate-500 font-mono-code">0/100</span>
               </div>
             </div>
 
@@ -404,10 +365,10 @@
         </div>
 
         <!-- Grounded Interactive Q&A ("Ask Anything") -->
-        <div class="bg-brand-navy text-white rounded-xl p-6 shadow-md space-y-4">
+        <div id="qaSection" class="bg-brand-navy text-white rounded-xl p-6 shadow-md space-y-4">
           <div class="flex justify-between items-center">
             <div>
-              <h4 class="text-xs font-bold text-orange-400 uppercase tracking-wider flex items-center gap-1.5">
+              <h4 class="text-xs font-bold text-brand-orange uppercase tracking-wider flex items-center gap-1.5">
                 <i data-lucide="search" class="w-4 h-4"></i> Grounded Conversational Q&A
               </h4>
               <p class="text-[11px] text-slate-300">Answers queries with exact quote citations. Refuses to hallucinate on absent topics.</p>
@@ -416,13 +377,13 @@
           </div>
 
           <div class="flex gap-2">
-            <input type="text" id="userQuestion" placeholder="e.g. Why was the deployment cancelled? or What task was assigned to Dave?" class="flex-1 bg-brand-navyDark border border-slate-700 rounded-md px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-orange font-mono" onkeydown="if(event.key==='Enter') askQuestion()">
-            <button onclick="askQuestion()" class="bg-brand-orange hover:bg-brand-orangeDark text-white font-bold px-6 py-2.5 rounded-md text-xs uppercase tracking-wider transition flex items-center gap-1.5">
+            <input type="text" id="userQuestion" placeholder="e.g. Why was the deployment cancelled? or What task was assigned to Dave?" class="flex-1 bg-brand-navyDark border border-slate-700 rounded-lg px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-orange font-mono-code" onkeydown="if(event.key==='Enter') askQuestion()">
+            <button onclick="askQuestion()" class="bg-brand-orange hover:bg-brand-orangeDark text-white font-bold px-6 py-2.5 rounded-lg text-xs uppercase tracking-wider transition flex items-center gap-1.5">
               Ask
             </button>
           </div>
 
-          <!-- Quick Query Chips -->
+          <!-- Quick Test Chips -->
           <div class="flex flex-wrap gap-2 text-[11px] items-center">
             <span class="text-slate-400">Quick tests:</span>
             <button onclick="askSpecific('Why was the deployment cancelled?')" class="bg-brand-navyLight hover:bg-slate-700 text-slate-200 px-2.5 py-1 rounded border border-slate-700">Why was deploy cancelled?</button>
@@ -444,12 +405,12 @@
   </main>
 
   <!-- ============================================================== -->
-  <!-- 6. FOOTER (Clean Minimalist Navy Footer) -->
+  <!-- 5. FOOTER (Minimalist Deep Navy Footer) -->
   <!-- ============================================================== -->
-  <footer class="bg-brand-navy text-slate-400 py-6 border-t border-slate-800 text-xs">
+  <footer class="bg-brand-navy text-slate-400 py-6 border-t border-slate-800 text-xs mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
       <div>
-        <span class="font-bold text-white">CATCHUP.</span> — Local-First AI Chat Intelligence & Prioritization Micro-App
+        <span class="font-bold text-white">WHAT DID I MISS.</span> — Local-First AI Chat Intelligence & Prioritizer
       </div>
       <div class="flex items-center gap-4">
         <span>100% On-Device</span>
@@ -508,21 +469,16 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
     let isSessionLocked = false;
     const SESSION_PIN = "1234";
 
-    function scrollToWorkspace() {
-      document.getElementById('workspaceContainer').scrollIntoView({ behavior: 'smooth' });
-    }
-
     function runNavSearch() {
       const q = document.getElementById('navSearchInput').value.trim();
       if (!q) return;
       document.getElementById('userQuestion').value = q;
-      document.getElementById('userQuestion').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('qaSection').scrollIntoView({ behavior: 'smooth' });
       askQuestion();
     }
 
     function loadDataset(key) {
       document.getElementById('chatInput').value = DATASETS[key] || '';
-      scrollToWorkspace();
       runAnalysis();
     }
 
@@ -532,7 +488,6 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
       const reader = new FileReader();
       reader.onload = (e) => {
         document.getElementById('chatInput').value = e.target.result;
-        scrollToWorkspace();
         runAnalysis();
       };
       reader.readAsText(file);
@@ -572,6 +527,7 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
       if (rawText.length < 10) {
         errBox.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4"></i> Conversation too short to analyze. Please paste or load a chat.`;
         errBox.classList.remove('hidden');
+        updateTopMetrics(0, 0, 0, '0%');
         lucide.createIcons();
         return;
       }
@@ -581,6 +537,7 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
       if (activeMessages.length === 0) {
         errBox.innerHTML = `<i data-lucide="shield-alert" class="w-4 h-4"></i> Adversarial prompt injection neutralized. No valid conversation messages remained.`;
         errBox.classList.remove('hidden');
+        updateTopMetrics(0, 0, 0, '0%');
         lucide.createIcons();
         return;
       }
@@ -668,7 +625,10 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
         ? diag.unansweredQuestions.map(q => `<div class="p-1 bg-white border border-slate-200 rounded">❓ <strong>${escapeHtml(q.sender)}:</strong> "${escapeHtml(q.question)}"</div>`).join('')
         : `<div class="text-slate-400 italic">No dropped or unanswered queries</div>`;
 
-      // 7. Executive Overview
+      // 7. Update Top 4 Metric Cards Dynamically
+      updateTopMetrics(alerts.length, actionItems.length, decisions.length, diag.signalRatio);
+
+      // 8. Executive Overview
       document.getElementById('digestStatsBadge').textContent = `${activeMessages.length} Messages Analyzed`;
       document.getElementById('digestSummaryText').innerHTML = `
         Digest processed <strong>${activeMessages.length} messages</strong> on-device. 
@@ -679,6 +639,13 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
 
       resultsDashboard.classList.remove('hidden');
       lucide.createIcons();
+    }
+
+    function updateTopMetrics(alerts, actions, decisions, signal) {
+      document.getElementById('metricAlertsCount').textContent = alerts;
+      document.getElementById('metricActionsCount').textContent = actions;
+      document.getElementById('metricDecisionsCount').textContent = decisions;
+      document.getElementById('metricSignalRatio').textContent = signal;
     }
 
     function askQuestion() {
@@ -705,7 +672,7 @@ Sarah: Team, let's meet at 3:00 PM for the sprint demo.`
       if (res.citations && res.citations.length > 0) {
         citCont.innerHTML = `<div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Citations:</div>` +
           res.citations.map(c => `
-            <div class="text-[11px] bg-slate-900 border border-slate-700 p-2 rounded font-mono text-slate-200">
+            <div class="text-[11px] bg-slate-900 border border-slate-700 p-2 rounded font-mono-code text-slate-200">
               <span class="text-brand-orange font-bold">${escapeHtml(c.sender)}</span> <span class="text-slate-400 text-[10px]">[${escapeHtml(c.timestamp)}]</span>: "${escapeHtml(c.quote)}"
             </div>
           `).join('');
