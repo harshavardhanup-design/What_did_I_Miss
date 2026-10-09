@@ -1,0 +1,15 @@
+[09/10/26, 09:15:10] Sarah (Tech Lead): Good morning team. Notice: production DB latency spiked past 800ms. Anyone touching migrations?
+[09/10/26, 09:16:02] Dave: Morning! Not me, was just drinking coffee ☕
+[09/10/26, 09:16:45] Kevin (DevOps): 🚨 URGENT: Replica 2 crashed. We are running on single node. If primary fails we have a total outage.
+[09/10/26, 09:17:30] Sarah (Tech Lead): @Kevin do not restart yet, grab the error logs first.
+[09/10/26, 09:18:10] Alex (Frontend): Hey guys off topic but did anyone review my PR #402 for button colors?
+[09/10/26, 09:18:35] Sarah (Tech Lead): @Alex not now please, focus on P0.
+[09/10/26, 09:19:12] Kevin (DevOps): Found it: OOM killed by kernel. Memory leak in worker queue.
+[09/10/26, 09:20:00] Sarah (Tech Lead): Action item: @Aaditya, increase worker node RAM to 16GB by 10:30 AM today.
+[09/10/26, 09:20:45] Aaditya: On it. Upgrading node pool now.
+[09/10/26, 09:22:10] Emily (Product): Can we still deploy release v2.4 at 12:00 PM today? The client is expecting it.
+[09/10/26, 09:23:00] Sarah (Tech Lead): No, cancel the 12:00 PM deployment. Code freeze until latency stabilizes.
+[09/10/26, 09:23:30] Mark (Sales): Wait, I already told the client it would be live by 12:30 PM!
+[09/10/26, 09:24:15] Sarah (Tech Lead): Tell them 4:00 PM tentatively. Safety first.
+[09/10/26, 09:25:00] Aaditya: Done! Worker node resized to 16GB. Memory utilization dropped to 34%.
+[09/10/26, 09:26:00] Kevin (DevOps): Latency back to 45ms. Single node recovered. We are green.
