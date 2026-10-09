@@ -49,6 +49,31 @@ function sanitizeAndGuard(rawText) {
 function parseChatMessages(rawText) {
   if (!rawText || !rawText.trim()) return [];
 
+  // 1. Direct JSON Support (Slack channel exports, Discord exports, arrays)
+  const trimmed = rawText.trim();
+  if (trimmed.startsWith('[') || trimmed.startsWith('{')) {
+    try {
+      const parsed = JSON.parse(trimmed);
+      const items = Array.isArray(parsed) ? parsed : (parsed.messages || parsed.data || [parsed]);
+      if (Array.isArray(items) && items.length > 0) {
+        return items.map((item, idx) => {
+          const sender = item.sender || item.user || item.username || item.author || 'User';
+          const text = item.text || item.message || item.content || '';
+          const timestamp = item.timestamp || item.ts || item.time || `Msg ${idx + 1}`;
+          return {
+            id: `msg-${idx + 1}`,
+            timestamp: String(timestamp),
+            sender: String(sender),
+            text: String(text),
+            raw: `${sender}: ${text}`
+          };
+        }).filter(m => !sanitizeAndGuard(m.text).hasInjectionAttempt);
+      }
+    } catch (e) {
+      // fallback to line parser
+    }
+  }
+
   const lines = rawText.split(/\r?\n/).map(l => l.trim()).filter(Boolean);
   const messages = [];
 
