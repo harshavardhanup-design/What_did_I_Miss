@@ -27,7 +27,7 @@ In modern collaborative environments (WhatsApp, Slack, Microsoft Teams, Discord)
 
 | Requirement | Platform Requirement | Implementation Status |
 | :--- | :--- | :--- |
-| **Requirement 1 / 5** | GitHub Repository link | Public GitHub Repository configured with full source code. |
+| **Requirement 1 / 5** | GitHub Repository link | [github.com/harshavardhanup-design/What_did_I_Miss](https://github.com/harshavardhanup-design/What_did_I_Miss) |
 | **Requirement 2 / 5** | Public Access | Repository published with public visibility and MIT open-source license. |
 | **Requirement 3 / 5** | Deployed Project link | Instant 1-click deployment on **Vercel** with global edge CDN delivery. |
 | **Requirement 4 / 5** | Brief description of the project | Provided in Section 1 and in the application's header. |
